@@ -11,9 +11,9 @@ Built using **React**, this project focuses on high performance, clean UI/UX, an
 - **Responsive Design:** Optimized for desktop, tablet, and mobile devices.
 - **Core Pages/Sections:**
   - Professional Landing/Home Page
-  - About Us Section/Page [cite: 17]
+  - About Us Section/Page 
   - Services Section (with dedicated service pages) 
-  - Team Showcase [cite: 19]
+  - Team Showcase 
   - Contact Us with an integrated contact form
 - **Communication Channels:** Direct WhatsApp chat button and social media integration
 - **Security & Performance:** Secure SSL configuration and basic performance optimization.
