@@ -1,59 +1,62 @@
+'use client';
 import { useEffect, useRef, useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
-import logoSvg from '../assets/logo.svg';
+import { useRouter, usePathname } from 'next/navigation';
+import Image from 'next/image';
+import Link from 'next/link';
+import { gsap } from 'gsap';
 import './Navbar.css';
 
 const links = [
-  { label: 'Home',       id: 'home',    route: null      },
-  { label: 'About Us',   id: 'about',   route: '/about'  },
-  { label: 'Team',       id: 'team',    route: '/team'   },
-  { label: 'Contact Us', id: 'contact', route: '/contact'},
+  { label: 'Home',       id: 'home',    route: null       },
+  { label: 'About Us',   id: 'about',   route: '/about'   },
+  { label: 'Team',       id: 'team',    route: '/team'    },
+  { label: 'Contact Us', id: 'contact', route: '/contact' },
 ];
 
 export default function Navbar() {
-  const [scrolled, setScrolled]   = useState(false);
-  const [menuOpen, setMenuOpen]   = useState(false);
+  const [scrolled, setScrolled]     = useState(false);
+  const [menuOpen, setMenuOpen]     = useState(false);
   const [activeLink, setActiveLink] = useState('');
+  const router   = useRouter();
+  const pathname = usePathname();
   const navRef   = useRef(null);
-  const navigate = useNavigate();
-  const location = useLocation();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60);
-    window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
+    const fn = () => setScrolled(window.scrollY > 60);
+    window.addEventListener('scroll', fn);
+    return () => window.removeEventListener('scroll', fn);
   }, []);
 
-  const handleLink = (link) => {
+  useEffect(() => {
+    gsap.from(navRef.current, {
+      opacity: 0,
+      y: -20,
+      duration: 1,
+      ease: 'power3.out',
+      delay: 0.15
+    });
+  }, []);
+
+  const handleLink = (e, link) => {
     setMenuOpen(false);
     if (link.route) {
-      navigate(link.route);
+      // Normal page navigation is handled by Link
       return;
     }
-    // If we're not on home page, navigate home first then scroll
-    if (location.pathname !== '/') {
-      navigate('/');
-      setTimeout(() => {
-        const el = document.getElementById(link.id);
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
-      }, 120);
+    // Anchor scroll on home page
+    if (pathname !== '/') {
+      // If we are on another page, let the Link handle navigating to '/'
     } else {
-      const el = document.getElementById(link.id);
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
+      e.preventDefault();
+      document.getElementById(link.id)?.scrollIntoView({ behavior: 'smooth' });
+      setActiveLink(link.id);
     }
-    setActiveLink(link.id);
   };
 
-  const handleCTA = () => {
+  const handleLogo = (e) => {
     setMenuOpen(false);
-    navigate('/contact');
-  };
-
-  const handleLogo = () => {
-    setMenuOpen(false);
-    if (location.pathname !== '/') {
-      navigate('/');
-    } else {
+    if (pathname === '/') {
+      e.preventDefault();
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
@@ -61,32 +64,30 @@ export default function Navbar() {
   return (
     <nav ref={navRef} className={`navbar ${scrolled ? 'scrolled' : ''}`} role="navigation" aria-label="Main navigation">
       <div className="nav-inner">
-        <button className="nav-logo" onClick={handleLogo} aria-label="Trust Real Estate — home">
-          <img src={logoSvg} alt="" className="nav-logo-img" aria-hidden="true" />
+        <Link href="/" className="nav-logo" onClick={handleLogo} aria-label="Trust Real Estate home">
+          <Image src="/logo_r.png" alt="" width={40} height={42} className="nav-logo-img" aria-hidden="true" />
           <div className="nav-logo-text">
             <span className="logo-text">TRUST</span>
             <span className="logo-sub">REAL ESTATE</span>
           </div>
-        </button>
+        </Link>
 
         <ul className="nav-links" role="list">
           {links.map(link => (
             <li key={link.id}>
-              <button
-                className={`nav-link ${(link.route && location.pathname === link.route) || (!link.route && activeLink === link.id) ? 'active' : ''}`}
-                onClick={() => handleLink(link)}
-                aria-label={`Go to ${link.label}`}
-                aria-current={link.route && location.pathname === link.route ? 'page' : undefined}
+              <Link
+                href={link.route || '/'}
+                className={`nav-link ${(link.route && pathname === link.route) || (!link.route && activeLink === link.id) ? 'active' : ''}`}
+                onClick={(e) => handleLink(e, link)}
+                aria-current={link.route && pathname === link.route ? 'page' : undefined}
               >
                 {link.label}
-              </button>
+              </Link>
             </li>
           ))}
         </ul>
 
-        <button className="nav-cta" onClick={handleCTA}>
-          Get In Touch
-        </button>
+        <Link href="/contact" className="nav-cta">Get In Touch</Link>
 
         <button
           className={`hamburger ${menuOpen ? 'open' : ''}`}
@@ -101,13 +102,11 @@ export default function Navbar() {
       {menuOpen && (
         <div className="mobile-menu" role="dialog" aria-modal="true">
           {links.map(link => (
-            <button key={link.id} className="mobile-link" onClick={() => handleLink(link)}>
+            <Link key={link.id} href={link.route || '/'} className="mobile-link" onClick={(e) => handleLink(e, link)}>
               {link.label}
-            </button>
+            </Link>
           ))}
-          <button className="nav-cta mobile-cta" onClick={handleCTA}>
-            Get In Touch
-          </button>
+          <Link href="/contact" className="nav-cta mobile-cta" onClick={() => setMenuOpen(false)}>Get In Touch</Link>
         </div>
       )}
     </nav>
