@@ -1,5 +1,5 @@
 'use client';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import { servicesData } from '@/data/servicesData';
@@ -9,7 +9,7 @@ const companyLinks = [
   { label: 'Home', href: '/' },
   { label: 'About Us', href: '/about' },
   { label: 'Our Team', href: '/team' },
-  { label: 'Contact Us', href: '/contact' },
+  { label: 'Contact Us', href: '/#contact' },
 ];
 const socials = [
   { label: 'Instagram', href: 'https://www.instagram.com/trustrealestatemarketing?igsh=MW9obnd0eXA0cmFjOA==', abbr: 'IG' },
@@ -19,6 +19,7 @@ const socials = [
 
 export default function Footer() {
   const router = useRouter();
+  const pathname = usePathname();
 
   return (
     <footer className="footer" role="contentinfo">
@@ -67,7 +68,18 @@ export default function Footer() {
             <ul role="list">
               {companyLinks.map(link => (
                 <li key={link.href}>
-                  <Link href={link.href} className="footer-link">{link.label}</Link>
+                  <Link
+                    href={link.href}
+                    className="footer-link"
+                    onClick={(e) => {
+                      if (link.href === '/#contact' && pathname === '/') {
+                        e.preventDefault();
+                        document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                      }
+                    }}
+                  >
+                    {link.label}
+                  </Link>
                 </li>
               ))}
             </ul>
