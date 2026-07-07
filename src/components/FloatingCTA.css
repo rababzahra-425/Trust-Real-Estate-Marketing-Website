@@ -1,0 +1,58 @@
+.floating-cta {
+  position: fixed;
+  right: 32px;
+  bottom: 40px;
+  z-index: 900;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.floating-cta.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+}
+
+.float-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid rgba(201, 168, 76, 0.35);
+  background: rgba(17, 17, 17, 0.95);
+  backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.25s, border-color 0.25s, transform 0.2s;
+  font-size: 18px;
+}
+
+.float-btn:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--obsidian);
+  transform: scale(1.1);
+}
+
+.float-btn.whatsapp {
+  color: #25D366;
+}
+
+.float-btn.whatsapp:hover {
+  color: var(--obsidian);
+}
+
+.float-btn.scroll-top {
+  color: var(--gold);
+  font-weight: 700;
+}
+
+@media (max-width: 600px) {
+  .floating-cta { right: 16px; bottom: 24px; }
+}

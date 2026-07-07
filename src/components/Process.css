@@ -1,0 +1,131 @@
+.process-section {
+  background: var(--obsidian);
+  padding: 120px 80px;
+  position: relative;
+}
+
+.process-section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.process-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 100px;
+  align-items: start;
+}
+
+.process-heading-block {
+  position: sticky;
+  top: 120px;
+}
+
+.process-title {
+  font-size: clamp(34px, 3.5vw, 54px);
+  font-weight: 300;
+  color: var(--white);
+  margin-top: 16px;
+  margin-bottom: 24px;
+  line-height: 1.2;
+}
+
+.process-title em {
+  font-style: italic;
+  color: var(--gold-light);
+}
+
+.process-subtitle {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--text-muted);
+  line-height: 1.8;
+  max-width: 320px;
+}
+
+/* Steps */
+.process-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.process-step {
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+}
+
+.step-connector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.step-num {
+  width: 52px;
+  height: 52px;
+  border: 1px solid rgba(201, 168, 76, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-serif);
+  font-size: 18px;
+  color: var(--gold);
+  background: var(--dark);
+  flex-shrink: 0;
+  transition: background 0.3s, border-color 0.3s;
+}
+
+.process-step:hover .step-num {
+  background: var(--gold-muted);
+  border-color: var(--gold);
+}
+
+.step-line {
+  width: 1px;
+  height: 64px;
+  background: linear-gradient(180deg, rgba(201,168,76,0.3), rgba(201,168,76,0.05));
+  margin: 8px 0;
+}
+
+.step-content {
+  padding-bottom: 48px;
+  padding-top: 12px;
+}
+
+.step-title {
+  font-family: var(--font-serif);
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+
+.step-desc {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--text-muted);
+  line-height: 1.8;
+  max-width: 440px;
+}
+
+@media (max-width: 1024px) {
+  .process-inner {
+    grid-template-columns: 1fr;
+    gap: 56px;
+  }
+  .process-heading-block { position: static; }
+  .process-section { padding: 80px 40px; }
+}
+
+@media (max-width: 600px) {
+  .process-section { padding: 64px 20px; }
+  .step-num { width: 44px; height: 44px; font-size: 15px; }
+}

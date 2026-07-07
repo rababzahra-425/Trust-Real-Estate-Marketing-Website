@@ -1,0 +1,220 @@
+.pp-page {
+  background: var(--obsidian);
+  min-height: 100vh;
+  color: var(--text-light);
+}
+
+/* ── Header ── */
+.pp-header {
+  background: var(--dark);
+  border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+  padding: 120px 80px 56px;
+  position: relative;
+}
+
+.pp-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.pp-back {
+  display: none;
+}
+
+.pp-header-content {
+  max-width: 640px;
+}
+
+.pp-title {
+  font-family: var(--font-serif);
+  font-size: clamp(40px, 5vw, 72px);
+  font-weight: 300;
+  color: var(--white);
+  margin: 12px 0 16px;
+  line-height: 1.1;
+}
+
+.pp-meta {
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 1.5px;
+  color: var(--text-muted);
+}
+
+/* ── Layout ── */
+.pp-layout {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 72px 80px 100px;
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 72px;
+  align-items: start;
+}
+
+/* ── Sidebar ── */
+.pp-sidebar {
+  position: sticky;
+  top: 100px;
+}
+
+.pp-sidebar-heading {
+  font-family: var(--font-sans);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 3.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 20px;
+}
+
+.pp-sidebar ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.pp-nav-link {
+  display: block;
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--text-muted);
+  text-decoration: none;
+  padding: 8px 12px;
+  border-left: 1px solid rgba(201, 168, 76, 0.1);
+  transition: color 0.2s, border-color 0.2s, padding-left 0.2s;
+  line-height: 1.4;
+}
+
+.pp-nav-link:hover {
+  color: var(--gold-light);
+  border-left-color: var(--gold);
+  padding-left: 18px;
+}
+
+/* ── Content ── */
+.pp-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.pp-section {
+  padding: 48px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.pp-section:first-child {
+  padding-top: 0;
+}
+
+.pp-section-title {
+  font-family: var(--font-serif);
+  font-size: 28px;
+  font-weight: 400;
+  color: var(--white);
+  margin-bottom: 20px;
+  line-height: 1.2;
+  position: relative;
+  padding-left: 20px;
+}
+
+.pp-section-title::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 3px;
+  height: calc(100% - 8px);
+  background: var(--gold);
+  border-radius: 2px;
+}
+
+.pp-body {
+  font-size: 15px;
+  font-weight: 300;
+  color: rgba(212, 206, 196, 0.75);
+  line-height: 1.9;
+  margin-bottom: 16px;
+  max-width: 680px;
+}
+
+.pp-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 16px 0;
+  padding: 0;
+  max-width: 680px;
+}
+
+.pp-list li {
+  font-size: 15px;
+  font-weight: 300;
+  color: rgba(212, 206, 196, 0.75);
+  line-height: 1.8;
+  padding-left: 24px;
+  position: relative;
+}
+
+.pp-list li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 9px;
+  color: var(--gold);
+  top: 7px;
+}
+
+.pp-footer-note {
+  margin-top: 16px;
+  font-style: italic;
+  color: rgba(212, 206, 196, 0.55);
+}
+
+/* Closing */
+.pp-closing {
+  padding-top: 56px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.pp-closing p {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-style: italic;
+  color: var(--text-muted);
+  max-width: 520px;
+  line-height: 1.8;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .pp-layout {
+    grid-template-columns: 1fr;
+    padding: 48px 48px 80px;
+    gap: 48px;
+  }
+  .pp-sidebar { position: static; }
+  .pp-sidebar ul { flex-direction: row; flex-wrap: wrap; gap: 4px; }
+  .pp-nav-link { border-left: none; border-bottom: 1px solid rgba(201,168,76,0.15); padding: 6px 10px; font-size: 12px; }
+  .pp-nav-link:hover { padding-left: 10px; border-bottom-color: var(--gold); }
+  .pp-header { padding: 100px 48px 48px; }
+}
+
+@media (max-width: 640px) {
+  .pp-layout { padding: 32px 20px 60px; }
+  .pp-header { padding: 100px 20px 36px; }
+  .pp-section { padding: 36px 0; }
+  .pp-section-title { font-size: 22px; }
+  .pp-body, .pp-list li { font-size: 14px; }
+}
