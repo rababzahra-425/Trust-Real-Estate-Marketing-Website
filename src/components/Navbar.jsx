@@ -7,19 +7,19 @@ import { gsap } from 'gsap';
 import './Navbar.css';
 
 const links = [
-  { label: 'Home',       id: 'home',    route: null       },
-  { label: 'About Us',   id: 'about',   route: '/about'   },
-  { label: 'Team',       id: 'team',    route: '/team'    },
+  { label: 'Home', id: 'home', route: null },
+  { label: 'About Us', id: 'about', route: '/about' },
+  { label: 'Team', id: 'team', route: '/team' },
   { label: 'Contact Us', id: 'contact', route: '/contact' },
 ];
 
 export default function Navbar() {
-  const [scrolled, setScrolled]     = useState(false);
-  const [menuOpen, setMenuOpen]     = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const [activeLink, setActiveLink] = useState('');
-  const router   = useRouter();
+  const router = useRouter();
   const pathname = usePathname();
-  const navRef   = useRef(null);
+  const navRef = useRef(null);
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 60);

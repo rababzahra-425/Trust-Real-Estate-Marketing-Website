@@ -1,28 +1,35 @@
 'use client';
 import { useEffect, useRef } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { gsap } from 'gsap';
 import './Hero.css';
+
+const HERO_IMAGE = '/trust.jpeg';
 
 export default function Hero() {
   const heroRef = useRef(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from('.hero-eyebrow',    { opacity:0, y:30, duration:1,   delay:0.3, ease:'power3.out' });
-      gsap.from('.hero-title span', { opacity:0, y:60, stagger:0.15, duration:1.2, delay:0.6, ease:'power3.out' });
-      gsap.from('.hero-subtitle',   { opacity:0, y:20, duration:1,   delay:1.4, ease:'power2.out' });
-      gsap.from('.hero-actions',    { opacity:0, y:20, duration:0.8, delay:1.7, ease:'power2.out' });
-      gsap.from('.scroll-hint',     { opacity:0, duration:1, delay:2.5 });
+      gsap.from('.hero-eyebrow', { opacity: 0, y: 30, duration: 1, delay: 0.3, ease: 'power3.out' });
+      gsap.from('.hero-title span', { opacity: 0, y: 60, stagger: 0.15, duration: 1.2, delay: 0.6, ease: 'power3.out' });
+      gsap.from('.hero-subtitle', { opacity: 0, y: 20, duration: 1, delay: 1.4, ease: 'power2.out' });
+      gsap.from('.hero-actions', { opacity: 0, y: 20, duration: 0.8, delay: 1.7, ease: 'power2.out' });
+      gsap.from('.scroll-hint', { opacity: 0, duration: 1, delay: 2.5 });
     }, heroRef);
     return () => ctx.revert();
   }, []);
 
   return (
     <section ref={heroRef} className="hero" id="home" aria-label="Hero section">
+      <link rel="preload" as="image" href={HERO_IMAGE} fetchPriority="high" />
       <div className="hero-bg">
-        <Image src="/trust.jpeg" alt="Trust Real Estate — luxury property" fill priority className="hero-bg-img" sizes="100vw" style={{ objectFit: 'cover' }} />
+        <div
+          className="hero-bg-img"
+          style={{ backgroundImage: `url(${HERO_IMAGE})` }}
+          role="img"
+          aria-label="Trust Real Estate — luxury property"
+        />
         <div className="hero-overlay" />
         <div className="hero-overlay-gradient" />
       </div>
@@ -47,7 +54,7 @@ export default function Hero() {
             onClick={(e) => {
               if (window.location.pathname === '/') {
                 e.preventDefault();
-                document.getElementById('services')?.scrollIntoView({ behavior:'smooth' });
+                document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
               }
             }}>
             Our Services
@@ -56,7 +63,7 @@ export default function Hero() {
             onClick={(e) => {
               if (window.location.pathname === '/') {
                 e.preventDefault();
-                document.getElementById('about')?.scrollIntoView({ behavior:'smooth' });
+                document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
               }
             }}>
             Our Story
