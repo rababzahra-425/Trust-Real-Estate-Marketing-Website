@@ -10,7 +10,7 @@ const links = [
   { label: 'Home', id: 'home', route: null },
   { label: 'About Us', id: 'about', route: '/about' },
   { label: 'Team', id: 'team', route: '/team' },
-  { label: 'Contact Us', id: 'contact', route: '/contact' },
+  { label: 'Contact Us', id: 'contact', route: '/#contact' },
 ];
 
 export default function Navbar() {
@@ -39,14 +39,8 @@ export default function Navbar() {
 
   const handleLink = (e, link) => {
     setMenuOpen(false);
-    if (link.route) {
-      // Normal page navigation is handled by Link
-      return;
-    }
-    // Anchor scroll on home page
-    if (pathname !== '/') {
-      // If we are on another page, let the Link handle navigating to '/'
-    } else {
+    const isAnchor = !link.route || link.route.startsWith('/#');
+    if (isAnchor && pathname === '/') {
       e.preventDefault();
       document.getElementById(link.id)?.scrollIntoView({ behavior: 'smooth' });
       setActiveLink(link.id);
@@ -77,7 +71,7 @@ export default function Navbar() {
             <li key={link.id}>
               <Link
                 href={link.route || '/'}
-                className={`nav-link ${(link.route && pathname === link.route) || (!link.route && activeLink === link.id) ? 'active' : ''}`}
+                className={`nav-link ${(link.route && !link.route.startsWith('/#') && pathname === link.route) || ((!link.route || link.route.startsWith('/#')) && activeLink === link.id) ? 'active' : ''}`}
                 onClick={(e) => handleLink(e, link)}
                 aria-current={link.route && pathname === link.route ? 'page' : undefined}
               >
@@ -87,7 +81,18 @@ export default function Navbar() {
           ))}
         </ul>
 
-        <Link href="/contact" className="nav-cta">Get In Touch</Link>
+        <Link
+          href="/#contact"
+          className="nav-cta"
+          onClick={(e) => {
+            if (pathname === '/') {
+              e.preventDefault();
+              document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+            }
+          }}
+        >
+          Get In Touch
+        </Link>
 
         <button
           className={`hamburger ${menuOpen ? 'open' : ''}`}
@@ -106,7 +111,19 @@ export default function Navbar() {
               {link.label}
             </Link>
           ))}
-          <Link href="/contact" className="nav-cta mobile-cta" onClick={() => setMenuOpen(false)}>Get In Touch</Link>
+          <Link
+            href="/#contact"
+            className="nav-cta mobile-cta"
+            onClick={(e) => {
+              setMenuOpen(false);
+              if (pathname === '/') {
+                e.preventDefault();
+                document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
+          >
+            Get In Touch
+          </Link>
         </div>
       )}
     </nav>
