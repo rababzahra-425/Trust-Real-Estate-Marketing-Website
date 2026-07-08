@@ -32,7 +32,7 @@ export default function AboutPage() {
 
       <header className="au-hero">
         <div className="au-hero-bg">
-          <Image src="/about_header.png" alt="" fill priority className="au-hero-bg-img" sizes="100vw" style={{ objectFit: 'cover' }} />
+          <Image src="/about_header.png" alt="Trust Real Estate boutique office showing luxury design elements" fill priority className="au-hero-bg-img" sizes="100vw" style={{ objectFit: 'cover' }} />
           <div className="au-hero-overlay" />
           <div className="au-hero-gradient" />
         </div>
@@ -94,7 +94,7 @@ export default function AboutPage() {
 
       <section className="au-why-section" aria-label="Why choose Trust Real Estate">
         <div className="au-why-bg">
-          <Image src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1400&q=75" alt="" fill className="au-why-bg-img" sizes="100vw" style={{ objectFit: 'cover' }} />
+          <Image src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1400&q=75" alt="Modern luxury property exterior with pool representing investment opportunities" fill className="au-why-bg-img" sizes="100vw" style={{ objectFit: 'cover' }} />
           <div className="au-why-overlay" />
         </div>
         <div className="au-why-content">

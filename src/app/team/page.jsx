@@ -1,10 +1,12 @@
 import TeamPage from '@/page-components/TeamPage';
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://trustrealestate.pk';
+
 export const metadata = {
-  title: 'Meet the Team',
-  description: 'Meet the professional board of directors, property advisors, sales managers, and legal counsels behind Trust Real Estate Marketing.',
+  title: 'Property Advisors & Consultants in Sahiwal | Our Team',
+  description: 'Meet our team of professional property advisors, real estate consultants, sales managers, and legal counsels at Trust Real Estate Sahiwal.',
   alternates: {
-    canonical: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://trustrealestate.pk'}/team`,
+    canonical: `${siteUrl}/team`,
   },
 };
 
@@ -44,8 +46,50 @@ const teamJsonLd = {
 };
 
 export default function TeamRoute() {
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": siteUrl
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Our Team",
+        "item": `${siteUrl}/team`
+      }
+    ]
+  };
+
+  const pageJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${siteUrl}/team/#webpage`,
+    "url": `${siteUrl}/team`,
+    "name": "Property Advisors & Consultants in Sahiwal | Our Team",
+    "description": "Meet our team of professional property advisors, real estate consultants, sales managers, and legal counsels at Trust Real Estate Sahiwal.",
+    "isPartOf": {
+      "@id": `${siteUrl}/#website`
+    },
+    "about": {
+      "@id": `${siteUrl}/#organization`
+    }
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(pageJsonLd) }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(teamJsonLd) }}

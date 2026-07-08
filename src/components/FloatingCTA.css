@@ -53,6 +53,19 @@
   font-weight: 700;
 }
 
+.floating-cta {
+  z-index: 99999; /* ensure it stays on top of other overlays */
+}
+
 @media (max-width: 600px) {
-  .floating-cta { right: 16px; bottom: 24px; }
+  .floating-cta {
+    right: 16px !important;
+    bottom: calc(16px + env(safe-area-inset-bottom)) !important;
+    gap: 8px !important;
+  }
+  .float-btn {
+    width: 40px !important;
+    height: 40px !important;
+    font-size: 16px !important;
+  }
 }

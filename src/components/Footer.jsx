@@ -9,7 +9,7 @@ const companyLinks = [
   { label: 'Home', href: '/' },
   { label: 'About Us', href: '/about' },
   { label: 'Our Team', href: '/team' },
-  { label: 'Contact Us', href: '/#contact' },
+  { label: 'Contact Us', href: '/contact' },
 ];
 const socials = [
   { label: 'Instagram', href: 'https://www.instagram.com/trustrealestatemarketing?igsh=MW9obnd0eXA0cmFjOA==', abbr: 'IG' },

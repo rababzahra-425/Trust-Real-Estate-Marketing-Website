@@ -172,7 +172,7 @@ export default function TeamPage() {
       <header className="tp-header">
         <div className="tp-header-bg-img-wrap">
           <Image src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1600&q=75"
-            alt="" fill priority className="tp-header-bg-img" sizes="100vw" style={{ objectFit: 'cover', objectPosition: 'center 30%' }} />
+            alt="Professional real estate advisors meeting at Trust Real Estate office in Sahiwal" fill priority className="tp-header-bg-img" sizes="100vw" style={{ objectFit: 'cover', objectPosition: 'center 30%' }} />
           <div className="tp-header-overlay" /><div className="tp-header-gradient" />
         </div>
         <div className="tp-header-text">

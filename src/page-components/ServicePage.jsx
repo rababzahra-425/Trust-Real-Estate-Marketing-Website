@@ -51,7 +51,7 @@ export default function ServicePageClient({ slug }) {
       {/* ── Hero ── */}
       <header className="sp-hero">
         <div className="sp-hero-bg">
-          <Image src={service.heroImg} alt="" fill priority className="sp-hero-img" sizes="100vw" style={{ objectFit: 'cover' }} />
+          <Image src={service.heroImg} alt={service.title} fill priority className="sp-hero-img" sizes="100vw" style={{ objectFit: 'cover' }} />
           <div className="sp-hero-overlay" />
           <div className="sp-hero-gradient" />
         </div>
@@ -138,7 +138,7 @@ export default function ServicePageClient({ slug }) {
       <section className="sp-cta-section" aria-label="Call to action">
         <div className="sp-cta-bg">
           <Image src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1600&q=75"
-            alt="" fill className="sp-cta-bg-img" sizes="100vw" style={{ objectFit: 'cover' }} />
+            alt="Luxury villa exterior at dusk representing premium real estate services in Pakistan" fill className="sp-cta-bg-img" sizes="100vw" style={{ objectFit: 'cover' }} />
           <div className="sp-cta-overlay" />
         </div>
         <div className="sp-cta-content sp-animate">

@@ -10,7 +10,7 @@ const links = [
   { label: 'Home', id: 'home', route: null },
   { label: 'About Us', id: 'about', route: '/about' },
   { label: 'Team', id: 'team', route: '/team' },
-  { label: 'Contact Us', id: 'contact', route: '/#contact' },
+  { label: 'Contact Us', id: 'contact', route: '/contact' },
 ];
 
 export default function Navbar() {
