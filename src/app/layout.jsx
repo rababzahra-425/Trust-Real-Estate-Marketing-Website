@@ -208,6 +208,23 @@ export default function RootLayout({ children }) {
             `,
           }}
         />
+        {/* Google tag (gtag.js) — G-XZ1MWQRB5F */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-XZ1MWQRB5F"
+          strategy="afterInteractive"
+        />
+        <Script
+          id="gtag-gxz1mwqrb5f"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-XZ1MWQRB5F');
+            `,
+          }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
@@ -217,7 +234,7 @@ export default function RootLayout({ children }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
         />
       </head>
-      <body>
+      <body suppressHydrationWarning>
         {/* Google Tag Manager (noscript) */}
         <noscript>
           <iframe
