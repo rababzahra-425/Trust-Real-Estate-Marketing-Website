@@ -1,3 +1,10 @@
+import img1 from '../../public/img1.webp';
+import img10 from '../../public/img10.webp';
+import img11 from '../../public/img11.webp';
+import img12 from '../../public/img12.webp';
+import img4 from '../../public/img4.webp';
+import img7 from '../../public/img7.webp';
+
 export const servicesData = [
   {
     slug: 'property-buying',
@@ -6,8 +13,8 @@ export const servicesData = [
     title: 'Property Buying',
     tagline: 'Your dream property, found and secured.',
     desc: 'We guide you through every step of acquiring your dream property — from shortlisting to final handover — with complete transparency and zero hassle.',
-    img: '/buy.jpg',
-    heroImg: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1600&q=80',
+    img: img1.src,
+    heroImg: img1.src,
     imgAlt: 'Luxury property entrance with grand doors',
     overview: `Buying a property is one of the most significant decisions you will ever make. At Trust Real Estate, we make sure it is also one of the most rewarding.\n\nOur advisors take the time to understand exactly what you're looking for — whether it's a sprawling family residence in DHA, a modern apartment in Bahria Town, or a commercial investment in Gulberg. We then curate a personalised shortlist of properties that match not just your budget, but your lifestyle and long-term goals.\n\nWe accompany you on every viewing, negotiate fiercely on your behalf, and manage every aspect of the legal and documentation process until the keys are in your hand.`,
     steps: [
@@ -27,7 +34,7 @@ export const servicesData = [
     ],
     stat1: { num: '300+', label: 'Residential Purchases Completed' },
     stat2: { num: '100%', label: 'Title Verified Properties' },
-    stat3: { num: '20+',  label: 'Years of Market Knowledge' },
+    stat3: { num: '20+', label: 'Years of Market Knowledge' },
   },
   {
     slug: 'property-selling',
@@ -36,8 +43,8 @@ export const servicesData = [
     title: 'Property Selling',
     tagline: 'Sell for the price your property deserves.',
     desc: 'Maximise the value of your property with our expert valuation, targeted marketing, and a network of qualified, serious buyers.',
-    img: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=700&q=75',
-    heroImg: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1600&q=80',
+    img: img10.src,
+    heroImg: img10.src,
     imgAlt: 'Luxury villa exterior at dusk',
     overview: `When you sell through Trust Real Estate, you're not just listing a property — you're gaining a dedicated sales partner who is as invested in your result as you are.\n\nWe begin with an honest, data-backed valuation that reflects real market conditions. We then deploy our full marketing toolkit: professional photography, targeted digital campaigns, our private buyer network, and strategic open-house events for the right audience.\n\nEvery enquiry is screened, every buyer is qualified, and every offer is carefully evaluated before we bring it to you. Our goal is simple: the highest possible price, in the shortest reasonable time, with the least stress.`,
     steps: [
@@ -56,8 +63,8 @@ export const servicesData = [
       'Post-sale legal support included',
     ],
     stat1: { num: '200+', label: 'Properties Successfully Sold' },
-    stat2: { num: '98%',  label: 'Asking Price Achievement Rate' },
-    stat3: { num: '45',   label: 'Average Days to Sale' },
+    stat2: { num: '98%', label: 'Asking Price Achievement Rate' },
+    stat3: { num: '45', label: 'Average Days to Sale' },
   },
   {
     slug: 'real-estate-consultancy',
@@ -66,8 +73,8 @@ export const servicesData = [
     title: 'Real Estate Consultancy',
     tagline: 'Decades of insight. Clear, honest advice.',
     desc: 'Decades of market intelligence at your disposal. We provide honest, data-driven advice to help you make confident real estate decisions.',
-    img: 'https://images.unsplash.com/photo-1556761175-b413da4baf72?w=700&q=75',
-    heroImg: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1600&q=80',
+    img: img12.src,
+    heroImg: img12.src,
     imgAlt: 'Professional real estate consultancy meeting',
     overview: `The Pakistani real estate market is complex, fast-moving, and full of misinformation. Having the right advisor beside you can mean the difference between a brilliant investment and a costly mistake.\n\nOur consultancy service is built on 20 years of deep market knowledge across Lahore, Islamabad, Karachi, and Sahiwal. We provide independent, objective advice — not influenced by commission targets or developer relationships.\n\nWhether you're deciding between two properties, assessing a commercial opportunity, or simply trying to understand where the market is heading, we give you clarity, confidence, and a clear path forward.`,
     steps: [
@@ -85,8 +92,8 @@ export const servicesData = [
       'Ongoing advisory relationship available',
     ],
     stat1: { num: '500+', label: 'Clients Advised' },
-    stat2: { num: '20+',  label: 'Years Market Experience' },
-    stat3: { num: '4',    label: 'Major Cities Covered' },
+    stat2: { num: '20+', label: 'Years Market Experience' },
+    stat3: { num: '4', label: 'Major Cities Covered' },
   },
   {
     slug: 'investment-advisory',
@@ -95,8 +102,8 @@ export const servicesData = [
     title: 'Investment Advisory',
     tagline: 'Grow your wealth. Intelligently.',
     desc: 'Strategic, high-yield investment opportunities identified and analysed by our experts. Grow your portfolio with calculated, informed precision.',
-    img: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=700&q=75',
-    heroImg: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1600&q=80',
+    img: img11.src,
+    heroImg: img11.src,
     imgAlt: 'Premium city skyline investment landscape',
     overview: `Real estate remains the most reliable wealth-building vehicle in Pakistan — but only when approached strategically. At Trust Real Estate, we bring 20 years of investment market analysis to help you identify, evaluate, and acquire properties with the strongest return potential.\n\nOur investment advisory service covers residential plots, commercial units, high-rise apartments, and mixed-use developments. We look beyond the surface — analysing rental yield, capital appreciation potential, infrastructure development plans, and title security before recommending any investment.\n\nWe work with first-time investors and seasoned portfolio builders alike. Our only goal is your financial success.`,
     steps: [
@@ -115,8 +122,8 @@ export const servicesData = [
       'Developer relationship discounts on select projects',
     ],
     stat1: { num: '₨ 2B+', label: 'Investment Value Managed' },
-    stat2: { num: '35%',   label: 'Average Portfolio Appreciation' },
-    stat3: { num: '150+',  label: 'Investment Transactions' },
+    stat2: { num: '35%', label: 'Average Portfolio Appreciation' },
+    stat3: { num: '150+', label: 'Investment Transactions' },
   },
   {
     slug: 'property-marketing',
@@ -125,8 +132,8 @@ export const servicesData = [
     title: 'Property Marketing',
     tagline: 'Present your property. Command attention.',
     desc: 'Premium photography, digital campaigns, and exclusive exposure to the right audience — your property presented at its absolute finest.',
-    img: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=700&q=75',
-    heroImg: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1600&q=80',
+    img: img4.src,
+    heroImg: img4.src,
     imgAlt: 'Architecturally photographed luxury property',
     overview: `In a crowded property market, presentation is everything. A beautifully marketed property doesn't just sell faster — it sells for more.\n\nTrust Real Estate's marketing team combines professional architectural photography, cinematic drone footage, compelling property descriptions, and data-driven digital campaigns to position your property in front of exactly the right buyers.\n\nWe leverage our owned social media channels, a private database of verified buyers, leading property portals, and targeted digital advertising to maximise visibility and generate qualified interest — not just clicks.`,
     steps: [
@@ -146,7 +153,7 @@ export const servicesData = [
     ],
     stat1: { num: '500+', label: 'Properties Marketed' },
     stat2: { num: '10K+', label: 'Verified Buyer Database' },
-    stat3: { num: '3x',   label: 'Average Enquiry Volume vs Market' },
+    stat3: { num: '3x', label: 'Average Enquiry Volume vs Market' },
   },
   {
     slug: 'property-rentals',
@@ -155,8 +162,8 @@ export const servicesData = [
     title: 'Property Rentals',
     tagline: 'Quality tenants. Hassle-free management.',
     desc: 'From luxury short-term stays to long-term leases, we connect landlords with verified, quality tenants and manage the process end to end.',
-    img: 'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=700&q=75',
-    heroImg: 'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=1600&q=80',
+    img: img7.src,
+    heroImg: img7.src,
     imgAlt: 'Elegant furnished luxury rental interior',
     overview: `Whether you're a landlord seeking reliable, long-term tenants or looking to maximise yield through premium short-term rentals, Trust Real Estate provides a complete, end-to-end rental service.\n\nWe market your property to our extensive network of vetted tenants — including corporate clients, expatriates, and professionals who require quality, furnished accommodation.\n\nOur team handles everything from tenant screening and lease drafting to move-in inspections and ongoing management — so you receive your rent on time, every time, without the headaches.`,
     steps: [
@@ -175,7 +182,7 @@ export const servicesData = [
       'Regular rental market reviews',
     ],
     stat1: { num: '400+', label: 'Rental Placements' },
-    stat2: { num: '96%',  label: 'Tenant Retention Rate' },
-    stat3: { num: '21',   label: 'Average Days to Let' },
+    stat2: { num: '96%', label: 'Tenant Retention Rate' },
+    stat3: { num: '21', label: 'Average Days to Let' },
   },
 ];
