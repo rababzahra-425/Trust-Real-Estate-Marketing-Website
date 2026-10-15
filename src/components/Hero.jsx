@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { gsap } from 'gsap';
 import './Hero.css';
 
-const HERO_IMAGE = '/trust.jpeg';
+const HERO_IMAGE = '/trust.webp';
 
 export default function Hero() {
   const heroRef = useRef(null);
