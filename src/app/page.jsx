@@ -1,6 +1,7 @@
 import Hero          from '@/components/Hero';
 import Marquee       from '@/components/Marquee';
 import RevealSection from '@/components/RevealSection';
+import PortfolioShowcase from '@/components/PortfolioShowcase';
 import Services      from '@/components/Services';
 import Properties    from '@/components/Properties';
 import Process       from '@/components/Process';
@@ -41,6 +42,7 @@ export default function HomePage() {
       <Hero />
       <Marquee />
       <RevealSection />
+      <PortfolioShowcase />
       <Services />
       <Properties />
       <Marquee />
