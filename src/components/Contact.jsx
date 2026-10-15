@@ -12,15 +12,15 @@ function validatePhone(raw) {
   if (!/^\+?[\d\s\-().]+$/.test(trimmed))
     return 'Phone number can only contain digits, spaces, +, -, ( or ).';
   const digits = trimmed.replace(/\D/g, '');
-  if (digits.length < 7)  return 'Phone number is too short (minimum 7 digits).';
+  if (digits.length < 7) return 'Phone number is too short (minimum 7 digits).';
   if (digits.length > 15) return 'Phone number is too long (maximum 15 digits).';
   return null;
 }
 
 export default function Contact() {
-  const [form, setForm]             = useState(INITIAL);
-  const [status, setStatus]         = useState('idle');
-  const [errorMsg, setErrorMsg]     = useState('');
+  const [form, setForm] = useState(INITIAL);
+  const [status, setStatus] = useState('idle');
+  const [errorMsg, setErrorMsg] = useState('');
   const [phoneError, setPhoneError] = useState('');
 
   const handleChange = e => {
@@ -41,18 +41,18 @@ export default function Contact() {
     if (phoneErr) { setPhoneError(phoneErr); document.getElementById('c-phone')?.focus(); return; }
     setStatus('loading'); setErrorMsg(''); setPhoneError('');
     try {
-      const res  = await fetch('/api/contact', {
+      const res = await fetch('/api/contact', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name: form.name, email: form.email, phone: form.phone.trim(), interest: form.interest, message: form.message }),
       });
       const data = await res.json();
       if (!res.ok) { setStatus('error'); setErrorMsg(data.error || 'Something went wrong.'); return; }
-      gsap.to('.contact-form', { opacity:0, y:-20, duration:0.4, onComplete: () => setStatus('success') });
+      gsap.to('.contact-form', { opacity: 0, y: -20, duration: 0.4, onComplete: () => setStatus('success') });
     } catch { setStatus('error'); setErrorMsg('Network error — please try again.'); }
   };
 
   useEffect(() => {
-    if (status === 'success') gsap.from('.success-msg', { opacity:0, y:20, duration:0.6 });
+    if (status === 'success') gsap.from('.success-msg', { opacity: 0, y: 20, duration: 0.6 });
   }, [status]);
 
   return (
@@ -66,14 +66,14 @@ export default function Contact() {
             <div className="contact-img-overlay" />
           </div>
           <div className="contact-info">
-            <p className="section-tag" style={{ marginBottom:'32px' }}>Get In Touch</p>
+            <p className="section-tag" style={{ marginBottom: '32px' }}>Get In Touch</p>
             <h2 className="contact-heading">Let's Find Your<br /><em>Perfect Property</em></h2>
             <p className="contact-desc">Reach out for a private consultation. Our advisors are available six days a week.</p>
             <div className="contact-details">
               {[
-                { icon:'✦', label:'Phone',  val:'+92 317 7255555',  href:'tel:+923177255555' },
-                { icon:'◈', label:'Email',  val:'shadnan72@gmail.com', href:'mailto:shadnan72@gmail.com' },
-                { icon:'◉', label:'Office', val:'Kalma Garden, Plaza Street no.2, near Shopping Club, Commercial Market Sahiwal', href:null },
+                { icon: '✦', label: 'Phone', val: '+92 317 7255555', href: 'tel:+923177255555' },
+                { icon: '◈', label: 'Email', val: 'shadnan72@gmail.com', href: 'mailto:shadnan72@gmail.com' },
+                { icon: '◉', label: 'Office', val: 'Kalma Garden, Plaza no.2, near Shopping Club, Commercial Market Sahiwal', href: null },
               ].map(d => (
                 <div key={d.label} className="contact-detail-item">
                   <span className="detail-icon" aria-hidden="true">{d.icon}</span>
@@ -102,12 +102,12 @@ export default function Contact() {
                 <div className="form-group">
                   <label htmlFor="c-name" className="form-label">Full Name</label>
                   <input id="c-name" name="name" type="text" className="form-input" placeholder="Your name"
-                    value={form.name} onChange={handleChange} required aria-required="true" disabled={status==='loading'} />
+                    value={form.name} onChange={handleChange} required aria-required="true" disabled={status === 'loading'} />
                 </div>
                 <div className="form-group">
                   <label htmlFor="c-email" className="form-label">Email</label>
                   <input id="c-email" name="email" type="email" className="form-input" placeholder="your@email.com"
-                    value={form.email} onChange={handleChange} required aria-required="true" disabled={status==='loading'} />
+                    value={form.email} onChange={handleChange} required aria-required="true" disabled={status === 'loading'} />
                 </div>
               </div>
               <div className="form-row">
@@ -121,13 +121,13 @@ export default function Contact() {
                     onChange={handleChange} onBlur={handlePhoneBlur}
                     required aria-required="true"
                     aria-describedby={phoneError ? 'phone-error' : undefined}
-                    disabled={status==='loading'} />
+                    disabled={status === 'loading'} />
                   {phoneError && <p id="phone-error" className="field-error" role="alert">{phoneError}</p>}
                 </div>
                 <div className="form-group">
                   <label htmlFor="c-interest" className="form-label">I'm Interested In</label>
                   <select id="c-interest" name="interest" className="form-input form-select"
-                    value={form.interest} onChange={handleChange} disabled={status==='loading'}>
+                    value={form.interest} onChange={handleChange} disabled={status === 'loading'}>
                     <option value="">Select type</option>
                     <option value="residential">Residential</option>
                     <option value="commercial">Commercial</option>
@@ -140,13 +140,13 @@ export default function Contact() {
                 <label htmlFor="c-message" className="form-label">Message</label>
                 <textarea id="c-message" name="message" className="form-input form-textarea"
                   placeholder="Tell us about your requirements..." rows={5}
-                  value={form.message} onChange={handleChange} disabled={status==='loading'} />
+                  value={form.message} onChange={handleChange} disabled={status === 'loading'} />
               </div>
               {status === 'error' && <p className="form-error" role="alert">{errorMsg}</p>}
               <button type="submit"
-                className={`form-submit ${status==='loading' ? 'form-submit--loading' : ''}`}
-                disabled={status==='loading'} aria-busy={status==='loading'}>
-                {status==='loading' ? 'Sending…' : 'Send Enquiry'}
+                className={`form-submit ${status === 'loading' ? 'form-submit--loading' : ''}`}
+                disabled={status === 'loading'} aria-busy={status === 'loading'}>
+                {status === 'loading' ? 'Sending…' : 'Send Enquiry'}
               </button>
             </form>
           )}
