@@ -4,25 +4,34 @@ import Link from 'next/link';
 import { gsap } from 'gsap';
 import './RevealSection.css';
 
+import img1 from '../../public/img1.webp';
+import img2 from '../../public/img2.webp';
+import img3 from '../../public/img3.webp';
+import img4 from '../../public/img4.webp';
+import img5 from '../../public/img5.webp';
+import img6 from '../../public/img6.webp';
+import img7 from '../../public/img7.webp';
+import img8 from '../../public/img8.webp';
+
 const TRAIL_IMGS = [
-  'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=400&q=80',
-  'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&q=80',
-  'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=400&q=80',
-  'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=400&q=80',
-  'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400&q=80',
-  'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80',
-  'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=400&q=80',
-  'https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=400&q=80',
+  img1.src,
+  img2.src,
+  img3.src,
+  img4.src,
+  img5.src,
+  img6.src,
+  img7.src,
+  img8.src,
 ];
 const POOL_SIZE = 14;
 
 export default function RevealSection() {
-  const sectionRef   = useRef(null);
-  const poolRef      = useRef([]);
+  const sectionRef = useRef(null);
+  const poolRef = useRef([]);
   const poolIndexRef = useRef(0);
-  const lastPos      = useRef({ x:-9999, y:-9999 });
-  const throttleRef  = useRef(null);
-  const observed     = useRef(false);
+  const lastPos = useRef({ x: -9999, y: -9999 });
+  const throttleRef = useRef(null);
+  const observed = useRef(false);
 
   useEffect(() => {
     const container = sectionRef.current;
@@ -37,7 +46,7 @@ export default function RevealSection() {
       wrap.appendChild(img);
       container.appendChild(wrap);
       poolRef.current.push(wrap);
-      gsap.set(wrap, { opacity:0, scale:0.65, pointerEvents:'none' });
+      gsap.set(wrap, { opacity: 0, scale: 0.65, pointerEvents: 'none' });
     }
     return () => { poolRef.current.forEach(el => el.remove()); poolRef.current = []; };
   }, []);
@@ -47,15 +56,17 @@ export default function RevealSection() {
     poolIndexRef.current++;
     const rect = sectionRef.current.getBoundingClientRect();
     const lx = x - rect.left, ly = y - rect.top;
-    const ox = (Math.random()-.5)*60, oy = (Math.random()-.5)*40;
-    const rot = (Math.random()-.5)*16;
-    const initScale = 0.55 + Math.random()*.2;
-    const peakScale = 0.88 + Math.random()*.18;
+    const ox = (Math.random() - .5) * 60, oy = (Math.random() - .5) * 40;
+    const rot = (Math.random() - .5) * 16;
+    const initScale = 0.55 + Math.random() * .2;
+    const peakScale = 0.88 + Math.random() * .18;
     gsap.killTweensOf(wrap);
-    gsap.set(wrap, { left:lx+ox-75, top:ly+oy-100, scale:initScale, rotation:rot, opacity:0, y:0, zIndex:4 });
-    gsap.to(wrap, { opacity:0.82, scale:peakScale, duration:0.22, ease:'power2.out' });
-    gsap.to(wrap, { opacity:0, scale:initScale-.05, y:28, duration:1.0, ease:'power3.in', delay:0.32,
-      onComplete: () => gsap.set(wrap, { y:0 }) });
+    gsap.set(wrap, { left: lx + ox - 75, top: ly + oy - 100, scale: initScale, rotation: rot, opacity: 0, y: 0, zIndex: 4 });
+    gsap.to(wrap, { opacity: 0.82, scale: peakScale, duration: 0.22, ease: 'power2.out' });
+    gsap.to(wrap, {
+      opacity: 0, scale: initScale - .05, y: 28, duration: 1.0, ease: 'power3.in', delay: 0.32,
+      onComplete: () => gsap.set(wrap, { y: 0 })
+    });
   }, []);
 
   useEffect(() => {
@@ -63,8 +74,8 @@ export default function RevealSection() {
     if (!container) return;
     const onMove = (e) => {
       const dx = e.clientX - lastPos.current.x, dy = e.clientY - lastPos.current.y;
-      if (Math.sqrt(dx*dx+dy*dy) < 30) return;
-      lastPos.current = { x:e.clientX, y:e.clientY };
+      if (Math.sqrt(dx * dx + dy * dy) < 30) return;
+      lastPos.current = { x: e.clientX, y: e.clientY };
       if (throttleRef.current) return;
       throttleRef.current = setTimeout(() => { throttleRef.current = null; }, 85);
       spawnAt(e.clientX, e.clientY);
@@ -94,18 +105,17 @@ export default function RevealSection() {
       <div className="rs-content">
         <p className="rs-tag section-tag" data-aos="fade-down" data-aos-duration="700">Elite Real Estate Marketing</p>
         <h2 className="rs-heading" data-aos="fade-up" data-aos-delay="150" data-aos-duration="800">
-          Invest in Assets That<br />
-          <em>Define Royal Elegance.</em>
+          We Provide Complete Sales,<br />
+          <em>Marketing & Digital Marketing for Your Colony.</em>
         </h2>
         <div className="rs-divider" aria-hidden="true" data-aos="fade-up" data-aos-delay="280" data-aos-duration="600" />
         <p className="rs-body" data-aos="fade-up" data-aos-delay="350" data-aos-duration="700">
-          At <strong>Trust Real Estate Marketing</strong>, we bridge the gap between premium luxury living
-          and high-return property investments. We believe that secure marketing is the cornerstone
-          of every visionary development.
+          At <strong>Trust Real Estate Marketing</strong>, we help housing societies and real estate
+          communities grow through strategic marketing, property sales, and digital solutions.
         </p>
         <p className="rs-body" data-aos="fade-up" data-aos-delay="430" data-aos-duration="700">
-          From premier commercial hubs to exclusive residential landscapes, our curated marketing portfolios
-          ensure absolute transparency, unmatched reliability, and maximum growth for your capital.
+          From brand positioning and lead generation to <strong className='text'>digital campaigns</strong> and <strong>sales support</strong>,
+          we provide end-to-end solutions that help societies reach <strong className="text">more buyers</strong> and <strong className="text">accelerate growth.</strong>
         </p>
         <Link
           href="/#services"
@@ -114,11 +124,11 @@ export default function RevealSection() {
           onClick={(e) => {
             if (window.location.pathname === '/') {
               e.preventDefault();
-              document.getElementById('services')?.scrollIntoView({ behavior:'smooth' });
+              document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
             }
           }}
         >
-          Discover Our Services
+          Discover More Services
         </Link>
         <p className="rs-hint" aria-hidden="true" data-aos="fade-in" data-aos-delay="800">✦ &nbsp; Move your cursor to explore our portfolio</p>
       </div>

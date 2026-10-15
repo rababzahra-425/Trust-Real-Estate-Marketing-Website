@@ -11,6 +11,11 @@
   /* custom cursor active */
 }
 
+.text {
+  font-weight: bold;
+  color: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
 .rs-section::before,
 .rs-section::after {
   content: '';
