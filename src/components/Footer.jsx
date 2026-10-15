@@ -40,7 +40,7 @@ export default function Footer() {
             <div className="footer-contact-quick">
               <a href="tel:+923177255555" className="fq-item"><span className="fq-icon" aria-hidden="true">✆</span>+92 317 725 5555</a>
               <a href="mailto:info@trustmarketing.pk" className="fq-item"><span className="fq-icon" aria-hidden="true">✉</span>info@trustmarketing.pk</a>
-              <span className="fq-item"><span className="fq-icon" aria-hidden="true">◉</span>Kalma Garden, Plaza Street no.2, near Shopping Club, Commercial Market Sahiwal, 57000</span>
+              <span className="fq-item"><span className="fq-icon" aria-hidden="true">◉</span>Kalma Garden, Plaza no.2, near Shopping Club, Commercial Market Sahiwal, 57000</span>
             </div>
             <div className="footer-socials" role="list" aria-label="Social media links">
               {socials.map(s => (
