@@ -1,0 +1,235 @@
+.pf-section {
+  position: relative;
+  background: var(--obsidian);
+  color: var(--text-light);
+  width: 100%;
+  height: 100vh;
+  min-height: 650px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-top: 1px solid rgba(201, 168, 76, 0.1);
+  border-bottom: 1px solid rgba(201, 168, 76, 0.1);
+}
+
+/* Background Media Container */
+.pf-media-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.pf-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform-gpu: translate3d(0, 0, 0);
+}
+
+.pf-bg-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 10, 10, 0.45);
+  transition: background 0.8s ease;
+  z-index: 2;
+}
+
+.pf-bg-overlay.unlocked {
+  background: rgba(10, 10, 10, 0.75); /* Darker overlay in unlocked state to make text pop */
+}
+
+/* Morphing Title Text */
+.pf-unlock-text-framer {
+  position: absolute;
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-style: italic;
+  letter-spacing: -2px;
+  z-index: 30; /* Higher than strips overlay to slide seamlessly on top of them */
+  pointer-events: none;
+  transform-origin: left top;
+  text-transform: lowercase;
+  white-space: nowrap;
+  line-height: 1;
+}
+
+/* Vertical Slices Overlay Container */
+.pf-slices-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 25;
+  display: flex;
+  pointer-events: none;
+}
+
+.pf-slice-strip {
+  height: 100%;
+  background: var(--obsidian);
+  will-change: transform;
+}
+
+/* Main Content Layout (State B) */
+.pf-content-overlay {
+  position: relative;
+  z-index: 15;
+  width: 100%;
+  height: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 100px 40px 40px 40px;
+  display: flex;
+  align-items: center;
+}
+
+.pf-content-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 80px;
+  width: 100%;
+  align-items: center;
+}
+
+/* Heading & Metrics Column */
+.pf-content-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.pf-b2b-heading {
+  font-family: var(--font-serif);
+  font-size: 3.5rem;
+  line-height: 1.15;
+  color: var(--white);
+  margin-bottom: 2.5rem;
+  font-weight: 300;
+}
+
+.pf-b2b-heading em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.pf-b2b-metrics {
+  display: flex;
+  gap: 30px;
+}
+
+.pf-b2b-metric-card {
+  background: rgba(26, 26, 26, 0.4);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(201, 168, 76, 0.15);
+  padding: 20px 24px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 220px;
+}
+
+.pf-b2b-metric-val {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  color: var(--gold);
+  line-height: 1;
+}
+
+.pf-b2b-metric-lbl {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--text-light);
+  font-weight: 500;
+}
+
+/* Keywords Column */
+.pf-content-right {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+}
+
+.pf-keyword-row {
+  display: flex;
+  align-items: center;
+  padding: 18px 24px;
+  border-left: 2px solid rgba(201, 168, 76, 0.15);
+  background: rgba(26, 26, 26, 0.2);
+  transition: all 0.4s ease;
+  border-radius: 0 4px 4px 0;
+}
+
+.pf-keyword-row:hover {
+  border-left-color: var(--gold);
+  background: rgba(201, 168, 76, 0.05);
+  transform: translateX(5px);
+}
+
+.pf-keyword-text {
+  font-family: var(--font-sans);
+  font-size: 1.15rem;
+  color: var(--text-light);
+  letter-spacing: 0.5px;
+  font-weight: 400;
+}
+
+/* Mobile Responsiveness styling */
+@media (max-width: 1024px) {
+  .pf-b2b-heading {
+    font-size: 2.8rem;
+  }
+  .pf-content-grid {
+    gap: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .pf-section {
+    height: auto;
+    min-height: 100vh;
+    padding: 120px 20px 60px 20px;
+  }
+
+  .pf-content-overlay {
+    padding: 0;
+  }
+
+  .pf-content-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .pf-b2b-heading {
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+  }
+
+  .pf-b2b-metrics {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .pf-b2b-metric-card {
+    min-width: 100%;
+  }
+
+  .pf-keyword-row {
+    padding: 14px 18px;
+  }
+
+  .pf-keyword-text {
+    font-size: 1rem;
+  }
+}
