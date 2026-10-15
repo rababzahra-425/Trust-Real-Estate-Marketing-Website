@@ -2,11 +2,11 @@ import './globals.css';
 import 'aos/dist/aos.css';
 import { Cormorant_Garamond, Montserrat } from 'next/font/google';
 import Script from 'next/script';
-import Navbar      from '@/components/Navbar';
-import Footer      from '@/components/Footer';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 import FloatingCTA from '@/components/FloatingCTA';
-import Cursor      from '@/components/Cursor';
-import AOSInit     from '@/components/AOSInit';
+import Cursor from '@/components/Cursor';
+import AOSInit from '@/components/AOSInit';
 import CookieBanner from '@/components/CookieBanner';
 
 const cormorant = Cormorant_Garamond({
@@ -49,6 +49,7 @@ export const metadata = {
     'Bahria Town Pakistan',
     'DHA Properties',
   ],
+
   authors: [{ name: 'Trust Real Estate Team', url: siteUrl }],
   creator: 'Trust Real Estate Marketing',
   publisher: 'Trust Real Estate Marketing',
